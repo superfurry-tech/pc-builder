@@ -1,4 +1,4 @@
-package montaje.caja.placabase;
+package montaje.caja.gpu;
 
 import montaje.caja.Pieza;
 
@@ -12,6 +12,6 @@ public class Gpu extends Pieza {
   public String toString() {
     return "GPU{" +
         super.toString() +
-        "}\n";
+        "}";
   }
 }

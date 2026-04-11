@@ -1,8 +1,8 @@
-package montaje.caja.placabase;
+package montaje.caja.gpu;
 
-import montaje.enums.TipoMemoriaDDR;
+import montaje.caja.placabase.MemoriaRam;
 
-public class MemoriaRamGddr extends MemoriaRam{
+public class MemoriaRamGddr extends MemoriaRam {
 
   public MemoriaRamGddr(String nombre, String fabricante, double precio, int consumoEnergia) {
     super(nombre, fabricante, precio, consumoEnergia);
@@ -12,6 +12,6 @@ public class MemoriaRamGddr extends MemoriaRam{
   public String toString() {
     return "Memoria GDDR{" +
         super.toString() +
-        "}\n";
+        "}";
   }
 }

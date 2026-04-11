@@ -2,19 +2,23 @@ package montaje.caja.placabase;
 
 import montaje.enums.TipoMemoriaDDR;
 
-public abstract class MemoriaRamDdr extends MemoriaRam {
-private TipoMemoriaDDR memoriaDDR;
+public class MemoriaRamDdr extends MemoriaRam {
+private TipoMemoriaDDR tipomemoriaDDR;
 
-  public MemoriaRamDdr(String nombre, String fabricante, double precio, int consumoEnergia, TipoMemoriaDDR memoriaDDR) {
+  public MemoriaRamDdr(String nombre, String fabricante, double precio, int consumoEnergia, TipoMemoriaDDR tipomemoriaDDR) {
     super(nombre, fabricante, precio, consumoEnergia);
-    this.memoriaDDR = memoriaDDR;
+    this.tipomemoriaDDR = tipomemoriaDDR;
+  }
+
+  public TipoMemoriaDDR getTipomemoriaDDR() {
+    return tipomemoriaDDR;
   }
 
   @Override
   public String toString() {
     return "Memoria DDR{" +
         super.toString() +
-        ", tipo=" + memoriaDDR +
-        "}\n";
+        ", tipo=" + tipomemoriaDDR +
+        "}";
   }
 }

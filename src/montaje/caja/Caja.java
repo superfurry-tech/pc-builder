@@ -10,6 +10,10 @@ public class Caja extends Pieza {
     this.sizeCaja = sizeCaja;
   }
 
+  public TipoSize getSizeCaja() {
+    return sizeCaja;
+  }
+
   @Override
   public String toString() {
     return "Caja{" +
