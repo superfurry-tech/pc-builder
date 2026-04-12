@@ -38,8 +38,8 @@ public class Main {
     Gpu gpu2 = new Gpu("GPU2", "F.GPU", 1100.0, 1100);
     Gpu gpu3 = new Gpu("GPU3", "F.GPU", 1200.0, 1200);
 
-    Caja c1 = new Caja("CAJA1", "F.CAJA", 10.0, 10, TipoSize.ATX);
-    Caja c2 = new Caja("CAJA2", "F.CAJA", 20.0, 20, TipoSize.MICROATX);
+    Caja c1 = new Caja("CAJA1", "F.CAJA", 10.0, TipoSize.ATX);
+    Caja c2 = new Caja("CAJA2", "F.CAJA", 20.0, TipoSize.MICROATX);
 
     FuenteAlimentacion f1 = new FuenteAlimentacion("FUENTE1", "F.FUENTE", 1300.0, 1300);
 
@@ -61,7 +61,7 @@ public class Main {
     p1.addCpu(cpu1);
     p1.addCpu(cpu2);
 
-    Ordenador pc1 = new Ordenador("PC1", c1, p1, r1, f1);
+    Ordenador pc1 = new Ordenador("PC1", c2, p1, r1, f1);
 
     p1.inspeccionarRAM();
 

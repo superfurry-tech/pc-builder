@@ -31,8 +31,12 @@ public class Ordenador {
     }
   }
 
-  public void mostrarInformeRAM(){
+  public void mostrarInformeRAM() {
     this.placaBase.inspeccionarRAM();
+  }
+
+  public void encender(){
+
   }
 
 

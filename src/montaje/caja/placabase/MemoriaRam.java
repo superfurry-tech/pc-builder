@@ -8,6 +8,8 @@ public abstract class MemoriaRam extends Pieza {
     super(nombre, fabricante, precio, consumoEnergia);
   }
 
+
+
   @Override
   public String toString() {
     return super.toString();

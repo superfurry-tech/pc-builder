@@ -5,8 +5,8 @@ import montaje.enums.TipoSize;
 public class Caja extends Pieza {
   private TipoSize sizeCaja;
 
-  public Caja(String nombre, String fabricante, double precio, int consumoEnergia, TipoSize sizeCaja) {
-    super(nombre, fabricante, precio, consumoEnergia);
+  public Caja(String nombre, String fabricante, double precio, TipoSize sizeCaja) {
+    super(nombre, fabricante, precio, 0);
     this.sizeCaja = sizeCaja;
   }
 
@@ -17,8 +17,12 @@ public class Caja extends Pieza {
   @Override
   public String toString() {
     return "Caja{" +
-        super.toString() +
+        "nombre='" + getNombre() +
+        "', fabricante='" + getFabricante() +
+        "', precio=" + getPrecio() +
         ", tamaño=" + sizeCaja +
         "}\n";
   }
 }
+
+
