@@ -96,19 +96,48 @@ public class PlacaBase extends Pieza {
     System.out.println("\n--- Inventario Memorias ---\nDDR4: " + contadorDDR4 + "\nDDR5: " + contadorDDR5 + "\nGDDR: " + contadorGDDR + "\n");
   }
 
-  /*public double calcularConsumoPlaca() {
-    double consumoPlaca = 0;
-    for (MemoriaRamDdr m : listaRams) {
+  public double calcularConsumoPlaca() {
+    double consumoPlaca = getConsumoEnergia();
+    for (MemoriaRam m : listaRams) {
       consumoPlaca += m.getConsumoEnergia();
     }
     for (Gpu g : listaGpus) {
       consumoPlaca += g.getConsumoEnergia();
     }
-    return consumoPlaca + cpu.getConsumoEnergia();
-  }*/
+    if (cpu != null) {
+      consumoPlaca += cpu.getConsumoEnergia();
+    }
+    return consumoPlaca;
+  }
+
+  public double calcularPrecioPlacaBase() {
+    double precioPlacaBase = getPrecio();
+    for (MemoriaRam m : listaRams) {
+      precioPlacaBase += m.getPrecio();
+    }
+    for (Gpu g : listaGpus) {
+      precioPlacaBase += g.getPrecio();
+    }
+    if (cpu != null) {
+      precioPlacaBase += cpu.getPrecio();
+    }
+    return precioPlacaBase;
+  }
 
   public TipoSize getSizePlaca() {
     return sizePlaca;
+  }
+
+  public Cpu getCpu() {
+    return cpu;
+  }
+
+  public ArrayList<MemoriaRam> getListaRams() {
+    return listaRams;
+  }
+
+  public ArrayList<Gpu> getListaGpus() {
+    return listaGpus;
   }
 
   @Override

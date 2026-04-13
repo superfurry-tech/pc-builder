@@ -6,7 +6,7 @@ public abstract class Pieza {
   private double precio;
   private int consumoEnergia;
 
-  public Pieza (String nombre, String fabricante, double precio, int consumoEnergia){
+  public Pieza(String nombre, String fabricante, double precio, int consumoEnergia) {
     this.nombre = nombre;
     this.fabricante = fabricante;
     this.precio = precio;

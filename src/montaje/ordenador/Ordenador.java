@@ -24,7 +24,6 @@ public class Ordenador {
 
   private boolean validarCajaYPlaca() {
     if (placaBase.getSizePlaca() != caja.getSizeCaja()) {
-      System.out.println("Incompatibilidad Caja y Placa Base por diferente tamaño. Tamaño Caja: " + caja.getSizeCaja() + " y tamaño Placa: " + placaBase.getSizePlaca());
       return false;
     } else {
       return true;
@@ -35,15 +34,74 @@ public class Ordenador {
     this.placaBase.inspeccionarRAM();
   }
 
-  public void encender(){
+  public double calcularConsumoOrdenador() {
+    double consumoOrdenador = placaBase.calcularConsumoPlaca();
 
+    if (refrigeracion != null) {
+      consumoOrdenador += refrigeracion.getConsumoEnergia();
+    }
+
+    if (fuenteAlimentacion != null) {
+      consumoOrdenador += fuenteAlimentacion.getConsumoEnergia();
+    }
+    return consumoOrdenador;
   }
 
+  public boolean encender() {
+    if (placaBase.getCpu() == null) {
+      System.out.println("¡Ordenador no enciende!. Falta CPU.");
+      return false;
+    }
+    if (placaBase.getListaRams().isEmpty()) {
+      System.out.println("¡Ordenador no enciende!. Falta Memoria RAM.");
+      return false;
+    }
+    if (placaBase.getListaGpus().isEmpty()) {
+      System.out.println("¡Ordenador no enciende!. Falta Tarjeta gráfica.");
+      return false;
+    }
+    if (refrigeracion == null) {
+      System.out.println("¡Ordenador no enciende!. Falta sistema de refrigeración.");
+      return false;
+    }
+    if (!validarCajaYPlaca()) {
+      return false;
+    }
+    if (fuenteAlimentacion.getPotencia() >= calcularConsumoOrdenador()) {
+      System.out.println("¡¡Ordenador encendido!!");
+      return true;
+    } else {
+      System.out.println("Potencia de Fuente de Alimentación insuficiente. El ordenador no se puede encender.");
+      return false;
+    }
+  }
+
+  public double calcularPrecioTotal() {
+    double precioTotal = 0;
+    if (placaBase != null) {
+      precioTotal = placaBase.calcularPrecioPlacaBase();
+    }
+    if (caja != null) {
+      precioTotal += caja.getPrecio();
+    }
+
+    if (refrigeracion != null) {
+      precioTotal += refrigeracion.getPrecio();
+    }
+
+    if (fuenteAlimentacion != null) {
+      precioTotal += fuenteAlimentacion.getPrecio();
+    }
+    return precioTotal;
+  }
 
   @Override
   public String toString() {
-    if (!esCompatible) {
-      return "Incompatibilidad Caja y Placa Base por diferente tamaño. Tamaño Caja: " + caja.getSizeCaja() + " y tamaño Placa: " + placaBase.getSizePlaca();
+    String compatibilidad;
+    if (esCompatible) {
+      compatibilidad = "true";
+    } else {
+      compatibilidad = "* NO COMPATIBLES *";
     }
     return "Ordenador{" +
         "nombre='" + nombre + '\'' +
@@ -51,7 +109,7 @@ public class Ordenador {
         ", placaBase=" + placaBase +
         ", refrigeración=" + refrigeracion +
         ", fuente alimentación=" + fuenteAlimentacion +
-        ", esCompatible=" + esCompatible +
+        ", compatibilidad Caja y Placa=" + compatibilidad +
         '}';
   }
 }

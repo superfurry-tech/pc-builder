@@ -13,9 +13,13 @@ import montaje.enums.TipoPlaca;
 import montaje.enums.TipoSize;
 import montaje.ordenador.Ordenador;
 
+import java.util.Scanner;
+
 public class Main {
-  static void main(String[] args) {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
     System.out.println();
+    double dineroCliente;
 
 
     PlacaBase p1 = new PlacaBase("PLACA1", "F.PLACA", 200.0, 200, TipoPlaca.NO_GAMING, TipoSize.ATX);
@@ -41,34 +45,46 @@ public class Main {
     Caja c1 = new Caja("CAJA1", "F.CAJA", 10.0, TipoSize.ATX);
     Caja c2 = new Caja("CAJA2", "F.CAJA", 20.0, TipoSize.MICROATX);
 
-    FuenteAlimentacion f1 = new FuenteAlimentacion("FUENTE1", "F.FUENTE", 1300.0, 1300);
+    FuenteAlimentacion f1 = new FuenteAlimentacion("FUENTE1", "F.FUENTE", 1300.0, 1300, 4350);
 
     Refrigeracion r1 = new Refrigeracion("REFRIG.1", "F.REFRIG", 1400.0, 1400);
 
 
-
-    p1.addRam(ddr4_1);
+    /*p1.addRam(ddr4_1);
     p1.addRam(ddr4_2);
     p1.addRam(ddr4_3);
     p1.addRam(ddr4_4);
-   /*p1.addRam(ddr4_5);
-   p1.addRam(ddr5_1);*/
+    p1.addRam(ddr4_5);
+    p1.addRam(ddr5_1);
 
-    p1.addGpu(gpu1);
-   /*p1.addGpu(gpu2);
-   p1.addGpu(gpu3);*/
+    p2.addGpu(gpu1);
+    p2.addGpu(gpu2);
+    p1.addGpu(gpu3);
 
     p1.addCpu(cpu1);
-    p1.addCpu(cpu2);
+    p1.addCpu(cpu2);*/
 
-    Ordenador pc1 = new Ordenador("PC1", c2, p1, r1, f1);
+    p2.addCpu(cpu1);
+    p2.addRam(ddr4_1);
+    p2.addGpu(gpu1);
 
-    p1.inspeccionarRAM();
-
-    System.out.println(pc1);
-
-    pc1.mostrarInformeRAM();
+    Ordenador pc1 = new Ordenador("PC1", c2, p2, r1, f1);
 
 
+    p2.inspeccionarRAM();
+
+    pc1.encender();
+
+    /*System.out.println(pc1);
+    pc1.mostrarInformeRAM();*/
+
+    System.out.println(pc1.calcularPrecioTotal());
+    System.out.print("¿Cuánto dinero tienes?: ");
+    dineroCliente = sc.nextDouble();
+    if (dineroCliente >= pc1.calcularPrecioTotal()) {
+      System.out.println("Compra OK. Tu cambio es: " + (dineroCliente - pc1.calcularPrecioTotal()) + " €");
+    } else {
+      System.out.println("Error. Te faltan: " + (pc1.calcularPrecioTotal() - dineroCliente) + " €");
+    }
   }
 }

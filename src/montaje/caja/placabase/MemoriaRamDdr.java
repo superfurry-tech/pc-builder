@@ -3,7 +3,7 @@ package montaje.caja.placabase;
 import montaje.enums.TipoMemoriaDDR;
 
 public class MemoriaRamDdr extends MemoriaRam {
-private TipoMemoriaDDR tipomemoriaDDR;
+  private TipoMemoriaDDR tipomemoriaDDR;
 
   public MemoriaRamDdr(String nombre, String fabricante, double precio, int consumoEnergia, TipoMemoriaDDR tipomemoriaDDR) {
     super(nombre, fabricante, precio, consumoEnergia);
